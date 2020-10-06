@@ -1,1 +1,2 @@
-import './render-ghost.test.js';
+import './utils.test.js';
+import './cart-utils.test.js';

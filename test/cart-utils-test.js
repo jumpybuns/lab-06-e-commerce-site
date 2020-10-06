@@ -9,15 +9,10 @@ test('should take in a book and return an li with an approp contents', (expect) 
     // Set up your arguments and expectations
     const cartItem = {
         id: 'patrick-swayze',
-        name: 'Patrick Swayze',
-        image: 'patrick-swayze.jpg',
-        description: 'The sexiest ghost of all. Good with clay and Whoopi Goldberg',
-        category: 'haunting',
-        price: 100.00,
-        cost: 2.00
+        quantity: 2
     };
 
-    const expected = '<li class="haunting" title="The sexiest ghost of all. Good with clay and Whoopi Goldberg"><h3>Patrick Swayze</h3><img src="../assets/patrick-swayze.jpg" alt="Patrick Swayzeimage"><p class="price">$100.00<button value="undefined">Add to Cart</button></p></li>';
+    const expected = '<tr><td>Patrick Swayze</td><td>$100</td><td>2</td><td>$300</td></tr>';
     
     //Act 
     // Call the function you're testing and set the result to a const

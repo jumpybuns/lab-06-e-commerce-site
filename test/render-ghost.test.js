@@ -1,10 +1,10 @@
 // IMPORT MODULES under test here:
 // import { example } from '../example.js';
-import renderGhosts from '../products/render-ghosts.js';
+import findById from './Utils.js';
 
 const test = QUnit.test;
 
-test('renders a ghost', (expect) => {
+test('take array as an id and returns first item found', (expect) => {
     //Arrange
     // Set up your arguments and expectations
     const patrickSwayze = {
@@ -21,7 +21,7 @@ test('renders a ghost', (expect) => {
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = renderGhosts(patrickSwayze);
+    const actual = findById(patrickSwayze);
     
     //Expect
     // Make assertions about what is expected versus the actual result
