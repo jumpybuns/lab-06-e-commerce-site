@@ -1,1 +1,1 @@
-import './example.test.js';
+import './render-ghost.test.js';

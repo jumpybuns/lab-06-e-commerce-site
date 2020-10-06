@@ -1,0 +1,42 @@
+#ghosts {
+    display: flex;
+    flex-grow: 2;
+
+}
+
+#ghosts li {
+    list-style: none;
+    position: relative;
+    background: white;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    width: 100px;
+    height: 150px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    box-shadow: 1px 1px 2px #ccc;
+    transition: transform 200ms ease-in-out;
+}
+
+#ghosts li h3 {
+    font-size: 1.1rem;
+    margin: 5px;
+}
+
+#ghosts li img {
+    width: 50%;
+    margin-top: 10px;
+}
+
+.price {
+    font-size: medium;
+    width: 50%;
+    margin-top: 10px;
+}
+
+
+#button {
+    display: flex;
+    margin-left: auto;
+}

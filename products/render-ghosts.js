@@ -1,6 +1,6 @@
 function renderGhosts(ghost) {
-    const li = document.getElementById('li');
-    li.className = ghost.category;
+    const li = document.createElement('li');
+    li.classList.add(ghost.category);
     li.title = ghost.description;
 
     const h3 = document.createElement('h3');
@@ -9,15 +9,12 @@ function renderGhosts(ghost) {
 
     const img = document.createElement('img');
     img.src = '../assets/' + ghost.image;
-    img.alt = ghost.name + 'image';
+    img.alt = `${ghost.name}image`;
     li.appendChild(img);
 
     const p = document.createElement('p');
-    p.className = 'price';
-
-    const usd = '$' + ghost.price.toFixed(2);
-
-    p.textContent = usd;
+    p.classList.add('price');
+    p.textContent = `$${ghost.price.toFixed(2)}`;
 
     const button = document.createElement('button');
     button.textContent = 'Add to Cart';
