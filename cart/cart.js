@@ -1,11 +1,11 @@
 import { ghosts } from '../data/ghosts.js';
 import { cart } from '../data/cart.js';
-import { renderTableRow } from './cart/cart-utils.js';
+import { renderTableRow } from './cart-utils.js';
 import { findById } from '../Utils.js';
 
 const table = document.querySelector('tbody');
 
-for (let i = 0; i < cart.length; i++); {
+for (let i = 0; i < cart.length; i++) {
     const ghost = cart[i];
     const tr = renderTableRow(ghost);
 
