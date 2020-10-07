@@ -1,3 +1,15 @@
+body {
+    background-image:url('../assets/ghostbackground.jpg') ;
+    background-image: center;
+}
+
+header { 
+    background-color: black;
+}
+
+.main-section {
+    font-size: x-large;
+}
 table {
     width: 100%;
 }
@@ -11,7 +23,7 @@ th {
 }
 
 tr:nth-child(odd) {
-    background: rgb(0, 0, 0);
+    background: rgb(196, 196, 196);
 }
 
 .total {

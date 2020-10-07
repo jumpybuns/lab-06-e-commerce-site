@@ -19,10 +19,10 @@ export function renderTableRow(cartItem) {
     // we should ise our findByuId fucntion to get the data from the source of truth
     const ghostData = findById(ghosts, cartItem.id);
     const price = ghostData.price;
-    const title = ghostData.title;
+    const name = ghostData.name;
 
-    price.textContent = `$${price}`;
-    title.textContent = title;
+    tdPrice.textContent = `$${price}`;
+    tdName.textContent = `${name}`;
 
     const total = price * cartItem.quantity;
 

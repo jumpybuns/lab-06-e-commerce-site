@@ -34,6 +34,7 @@ export const ghosts = [
 
 
 
+
 export const cart = [
     { id: 'patrick-swayze', quantity: 3,
     },

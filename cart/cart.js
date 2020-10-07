@@ -7,6 +7,7 @@ const table = document.querySelector('tbody');
 
 for (let i = 0; i < cart.length; i++) {
     const ghost = cart[i];
+    
     const tr = renderTableRow(ghost);
 
     table.appendChild(tr);
@@ -18,7 +19,7 @@ const totalCell = document.querySelector('.total');
 
 totalCell.textContent = `Total: $${total}`;
 
-function calculateTotal(cartArray) {
+export function calculateTotal(cartArray) {
     let accumulator = 0;
 
     for (let i = 0; i < cartArray.length; i++) {
@@ -32,6 +33,5 @@ function calculateTotal(cartArray) {
     }
     return accumulator;
 }
-
 
 
