@@ -1,0 +1,37 @@
+body {
+    background-image:url('../assets/ghostbackground.jpg') ;
+    background-image: center;
+}
+
+header { 
+    background-color: black;
+}
+
+.main-section {
+    font-size: x-large;
+}
+table {
+    width: 100%;
+}
+
+td, th {
+    border: solid 1px
+}
+
+th {
+    background-color: rgb(231, 195, 255);
+}
+
+tr:nth-child(odd) {
+    background: rgb(196, 196, 196);
+}
+
+.total {
+    text-align: right;
+    padding: 5px;
+}
+
+.tablerow {
+    background-color: white;
+    border: none
+}

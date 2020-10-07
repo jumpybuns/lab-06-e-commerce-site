@@ -69,7 +69,7 @@ const slimer = {
     cost: 3.00
 };
 
-const ghosts = [
+export const ghosts = [
     largeMarge,
     patrickSwayze,
     spaceGhost,
@@ -79,4 +79,3 @@ const ghosts = [
     slimer
 ];
 
-export default ghosts;
