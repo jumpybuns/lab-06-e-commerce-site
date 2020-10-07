@@ -1,5 +1,5 @@
-import ghosts from '../data/ghosts.js';
-import renderGhosts from './render-ghosts.js';
+import { ghosts } from '../data/ghosts.js';
+import { renderGhosts } from '../Utils.js';
 
 const unorderedListElements = document.getElementById('ghosts');
 
