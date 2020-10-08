@@ -37,7 +37,7 @@ export function calculateTotal(cartArray) {
     return accumulator;
 }
 
-addToCartButton .addEventListener('click', () => {
+addToCartButton.addEventListener('click', () => {
     const stringyCart = JSON.stringify(cart, true, 2);
     alert(stringyCart);
     
