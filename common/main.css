@@ -65,3 +65,14 @@ footer {
     background-color: var(--color3);
     box-shadow: var(--shadow);
 }
+
+button {
+    transition-duration: 0.4s;
+    width: 10px
+    
+  }
+  
+  button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }

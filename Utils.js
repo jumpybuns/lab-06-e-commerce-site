@@ -41,8 +41,12 @@ export function renderGhosts(ghost) {
 
     li.appendChild(p);
 
+ 
 
     button.textContent = 'Add to Cart';
+    button.style.width = '50%';
+    button.style.fontFamily = 'Ghosts';
+
 
     button.addEventListener('click', () => {
 
@@ -51,18 +55,29 @@ export function renderGhosts(ghost) {
 
         if (itemInCart === undefined) {
 
-            const newCartItem = {
+            const newCartItem = { 
                 id: ghost.id,
                 quantity: 1,
             };
             cart.push(newCartItem);
         } else {
             itemInCart.quantity++;
+            
         }
         setInLocalStorage(CART, cart);
+
+
+        
     });
+
+        
+        
+
     
-    removeButton.textContent = 'remove one';
+    removeButton.textContent = 'Remove One';
+    removeButton.style.width = '50%';
+    removeButton.style.fontFamily = 'Ghosts';
+
 
     removeButton.addEventListener('click', () => {
         const cart = getFromLocalStorage(CART) || [];

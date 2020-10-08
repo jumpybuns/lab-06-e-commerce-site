@@ -8,3 +8,4 @@ for (let i = 0; i < ghosts.length; i++) {
     const el = renderGhosts(ghost);
     unorderedListElements.appendChild(el);
 }
+
