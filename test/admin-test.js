@@ -1,4 +1,5 @@
-
+import { addProduct } from '../admin/product-entry.js';
+// import getFromLocalStorage from '../Utils.js';
 const test = QUnit.test;
 
 test('take array as an id and returns first item found', (expect) => {

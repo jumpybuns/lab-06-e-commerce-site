@@ -1,3 +1,5 @@
+import { GHOSTS } from '../admin/product-entry.js';
+import { ghosts as hardCodeGhosts } from '../data/ghosts.js';
 
 export function findById(someArray, someId) {
     for (let i = 0; i < someArray.length; i++) {
@@ -6,6 +8,17 @@ export function findById(someArray, someId) {
             return item;
         }
     }
+}
+
+export function getLocallyStoredGhosts() {
+    let localStorageGhosts = JSON.parse(localStorage.getItem(GHOSTS));
+
+    if (!localStorageGhosts) {
+        const stringyGhosts = JSON.stringify(hardCodeGhosts);
+        localStorage.setItem(GHOSTS, stringyGhosts);
+        localStorageGhosts = hardCodeGhosts;
+    }
+    return localStorageGhosts;
 }
 
 export function calcLineItem(quantity, price) {
@@ -17,13 +30,13 @@ function roundCurrency(amount) {
     return Math.round(amount * 100) / 100;
 }
 
-export function calcOrderTotal(cart, fruits) {
+export function calcOrderTotal(cart, ghosts) {
     let orderTotal = 0;
 
     for (let i = 0; i < cart.length; i++) {
         const lineItem = cart[i];
-        const fruit = findById(fruits, lineItem.id);
-        const lineTotal = calcLineItem(lineItem.quantity, fruit.price);
+        const ghost = findById(ghosts, lineItem.id);
+        const lineTotal = calcLineItem(lineItem.quantity, ghost.price);
         orderTotal += lineTotal;
     }
 
@@ -64,13 +77,13 @@ export function renderGhosts(ghost) {
         drop.append(option);
 
     }
-    drop.addEventListener('change', (e) => {
-        console.log(e.target.value);
-    });
+    // drop.addEventListener('change', (e) => {
+    //     console.log(e.target.value);
+    // });
 
-    p.appendChild(button);
+    // p.appendChild(button);
 
-    li.appendChild(p);
+    // li.appendChild(p);
 
  
 
