@@ -1,47 +1,36 @@
-import { ghosts } from '../data/ghosts.js';
-// import { cart } from '../data/cart.js';
-import { renderTableRow } from './cart-utils.js';
-import { findById, getFromLocalStorage, CART } from '../Utils.js';
+import ghosts from '../data/ghosts.js';
+import { findById, calcOrderTotal, toUSD } from '../common/utils.js';
+import renderLineItem from './render-line-item.js';
 
-const table = document.querySelector('tbody');
-const addToCartButton = document.querySelector('button');
+const tbody = document.querySelector('tbody');
+const orderTotalCell = document.getElementById('order-total-cell');
+const placeOrderButton = document.getElementById('place-order-button');
 
-const cart = getFromLocalStorage(CART) || [];
+const initializedEmptyCart = '[]';
+const cartInLocalStorage = localStorage.getItem('CART') || initializedEmptyCart;
+const cart = JSON.parse(cartInLocalStorage);
 
 for (let i = 0; i < cart.length; i++) {
-    const ghost = cart[i];
-    
-    const tr = renderTableRow(ghost);
+    const lineItem = cart[i];
+    const ghost = findById(ghosts, lineItem.id);
+    const dom = renderLineItem(lineItem, ghost);
 
-    table.appendChild(tr);
+    tbody.appendChild(dom);
 }
 
-const total = calculateTotal(cart);
+const orderTotal = calcOrderTotal(cart, ghosts);
+orderTotalCell.textContent = toUSD(orderTotal);
 
-const totalCell = document.querySelector('.total');
 
-totalCell.textContent = `Total: $${total}`;
+if (cart.length === 0) {
 
-export function calculateTotal(cartArray) {
-    let accumulator = 0;
-
-    for (let i = 0; i < cartArray.length; i++) {
-        const item = cartArray[i];
-
-        const realItem = findById(ghosts, item.id);
-
-        const subtotal = realItem.price * item.quantity;
-
-        accumulator = accumulator + subtotal;
-    }
-    return accumulator;
+    placeOrderButton.disabled = true;
 }
+else {
 
-addToCartButton.addEventListener('click', () => {
-    const stringyCart = JSON.stringify(cart, true, 2);
-    alert(stringyCart);
-    
-    localStorage.clear();
-    window.location.href = '/';
-
-});
+    placeOrderButton.addEventListener('click', () => {
+        localStorage.removeItem('CART');
+        alert('Order placed:\n' + JSON.stringify(cart, true, 2));
+        window.location = '../';
+    });
+}

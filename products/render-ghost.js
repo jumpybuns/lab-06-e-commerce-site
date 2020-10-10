@@ -1,68 +1,66 @@
-// import { findById, CART } from '../Utils.js';
+import { findById } from '../common/utils.js';
+import { toUSD } from '../common/utils.js';
+
+function renderGhosts(ghost) {
+    const li = document.createElement('li');
+    li.className = ghost.category;
+    li.title = ghost.description;
+
+    const h3 = document.createElement('h3');
+    h3.textContent = ghost.name;
+    li.appendChild(h3);
+
+    const img = document.createElement('img');
+    img.src = '../assets/' + ghost.image;
+    img.alt = ghost.name + ' image';
+    li.appendChild(img);
+
+    const p = document.createElement('p');
+    p.className = 'price';
+    p.textContent = toUSD(ghost.price);
+    
+    const button = document.createElement('button');
+    button.textContent = 'Add';
+    button.value = ghost.id;
+    button.addEventListener('click', () => {
+
+        const initializedEmptyCart = '[]';
+        const cartInLocalStorage = localStorage.getItem('CART') || initializedEmptyCart;
+        const cart = JSON.parse(cartInLocalStorage);
+
+        let itemInCart = findById(cart, ghost.id);
 
 
-// function renderGhosts(ghost) {
-//     const li = document.createElement('li');
-//     li.classList.add(ghost.category);
-//     li.title = ghost.description;
+        if (!itemInCart) {
 
-//     const h3 = document.createElement('h3');
-//     h3.textContent = ghost.name;
-//     li.appendChild(h3);
+            const initializedCartItem = {
 
-//     const img = document.createElement('img');
-//     img.src = '../assets/' + ghost.image;
-//     img.alt = `${ghost.name}image`;
-//     li.appendChild(img);
-
-//     const p = document.createElement('p');
-//     p.classList.add('price');
-//     p.textContent = `$${ghost.price.toFixed(2)}`;
-
-//     const button = document.createElement('button');
-//     button.textContent = 'Add to Cart';
-//     button.value = ghost.code;
-//     p.appendChild(button);
-
-//     li.appendChild(p);
-
-//     return li;
-// }
-
-// export default renderGhosts;
+                id: ghost.id,
+                quantity: 1
+            };
 
 
-// const button = document.createElement('button');
-// button.textContent = 'Add to cart';
+            cart.push(initializedCartItem);
+        }
+        else {
 
-// button.addEventListener('click', () => {
+            itemInCart.quantity++;
+        }
 
-//     const cart = getFromLocalStorage(CART) || [];
-//     const itemInCart = findById(cart, ghost.id);
 
-//     if (itemInCart === undefined) {
+ 
+        const stringCart = JSON.stringify(cart);
 
-//         const lineItem = {
-//             id: ghost.id,
-//             quantity: 1,
-//         };
-//         cart.push(lineItem);
-//     } else {
-//         itemInCart.quantity++;
-//     }
-//     setInLocalStorage(CART, cart);
-// });
+        localStorage.setItem('CART', stringCart);
 
-// export function getFromLocalStorage(key) {
-//     const item = localStorage.getItem(key);
+        alert('1 ' + ghost.name + ' added to cart');
 
-//     return JSON.parse(item);
-// }
+    });
+    p.appendChild(button);
 
-// export function setInLocalStorage(key, value) {
-//     const stringyItem = JSON.stringify(value);
+    li.appendChild(p);
 
-//     localStorage.setItem(key, stringyItem);
+    return li;
+}
 
-//     return value;
-// }
+export default renderGhosts;

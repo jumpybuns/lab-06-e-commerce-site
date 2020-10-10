@@ -1,65 +1,56 @@
 
-import { getLocallyStoredGhosts } from '../Utils.js';
+import { findById } from '../common/utils.js';
 
 const form = document.getElementById('form');
-
-export const GHOSTS = 'GHOSTS';
-
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const data = new FormData(form);
-  
-    const id = data.get('id');
-    const name = data.get('name');
-    const description = data.get('description');
-    const image = data.get('image');
-    const price = data.get('price');
 
     const newGhost = {
-        id: id,
-        name: name,
-        description: description,
-        image: image,
-        price: Number(price),
+        id: data.get('id'),
+        name: data.get('name'),
+        description: data.get('description'),
+        image: data.get('image'),
+        price: Number(data.get('price')),
         
     
     };
 
 
-    const localStorageGhosts = getLocallyStoredGhosts();
+    const existingGhosts = findById();
 
-    localStorageGhosts.push(newGhost);
+    existingGhosts.push(newGhost);
 
-    const stringyLocalGhosts = JSON.stringify(localStorageGhosts);
-    localStorage.setItem(GHOSTS, stringyLocalGhosts);
+    const stringyGhosts = JSON.stringify(existingGhosts);
+    localStorage.setItem('GHOSTS', stringyGhosts);
 
-    // window.location = '../products/index.html';
+    window.location = '../products/index.html';
 });
 
 
-export function getFromLocalStorage(key) {
-    const item = localStorage.getItem(key);
+// export function getFromLocalStorage(key) {
+//     const item = localStorage.getItem(key);
 
-    return JSON.parse(item);
-}
+//     return JSON.parse(item);
+// }
 
-export function setInLocalStorage(key, value) {
-    const stringyItem = JSON.stringify(value);
+// export function setInLocalStorage(key, value) {
+//     const stringyItem = JSON.stringify(value);
 
-    localStorage.setItem(key, stringyItem);
+//     localStorage.setItem(key, stringyItem);
 
-    return value;
-}
+//     return value;
+// }
 
-export function addProduct(newItem) {
-    const localStorageProducts = getFromLocalStorage();
+// export function addProduct(newItem) {
+//     const localStorageProducts = getFromLocalStorage();
 
-    localStorageProducts.push(newItem);
+//     localStorageProducts.push(newItem);
 
-    const stringyLocalProduct = JSON.stringify(localStorageProducts);
-    localStorage.setItem(GHOSTS, stringyLocalProduct);
+//     const stringyLocalProduct = JSON.stringify(localStorageProducts);
+//     localStorage.setItem(GHOSTS, stringyLocalProduct);
 
 
-}
+// }
