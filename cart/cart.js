@@ -1,9 +1,12 @@
 import { ghosts } from '../data/ghosts.js';
-import { cart } from '../data/cart.js';
+// import { cart } from '../data/cart.js';
 import { renderTableRow } from './cart-utils.js';
-import { findById } from '../Utils.js';
+import { findById, getFromLocalStorage, CART } from '../Utils.js';
 
 const table = document.querySelector('tbody');
+const addToCartButton = document.querySelector('button');
+
+const cart = getFromLocalStorage(CART) || [];
 
 for (let i = 0; i < cart.length; i++) {
     const ghost = cart[i];
@@ -34,4 +37,11 @@ export function calculateTotal(cartArray) {
     return accumulator;
 }
 
+addToCartButton.addEventListener('click', () => {
+    const stringyCart = JSON.stringify(cart, true, 2);
+    alert(stringyCart);
+    
+    localStorage.clear();
+    window.location.href = '/';
 
+});

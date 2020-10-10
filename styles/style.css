@@ -1,4 +1,10 @@
-
+@font-face {
+    font-family: 'Ghosts';
+    src: url('../assets/HighlandGothicLightFLF.ttf');
+    font-weight: lighter;
+    font-style: lighter;
+    
+}
 body {
     --color1: #ffffff;
     --color2: #ffffff;
@@ -24,7 +30,7 @@ body {
     --gutter: 30px;
     --footer-height: 25px;
     
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Ghosts', sans-serif;
     background-color: var(--color2);
 }
 

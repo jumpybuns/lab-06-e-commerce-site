@@ -1,2 +1,2 @@
 
-import './cart-utils-test.js';
+import './admin-test.js';

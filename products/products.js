@@ -1,10 +1,13 @@
-import ghosts from '../data/ghosts.js';
-import renderGhosts from './render-ghosts.js';
 
-const unorderedListElements = document.getElementById('ghosts');
+import { getLocallyStoredGhosts, renderGhosts } from '../Utils.js';
 
-for (let i = 0; i < ghosts.length; i++) {
-    const ghost = ghosts[i];
-    const el = renderGhosts(ghost);
-    unorderedListElements.appendChild(el);
+const localStorageGhosts = getLocallyStoredGhosts();
+
+const ul = document.querySelector('ghosts');
+
+for (let i = 0; i < localStorageGhosts.length; i++) {
+    const ghost = localStorageGhosts[i];
+    const li = renderGhosts(ghost);
+    ul.appendChild(li);
 }
+

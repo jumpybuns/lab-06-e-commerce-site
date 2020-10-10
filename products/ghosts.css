@@ -20,6 +20,7 @@ body {
     
     font-family: 'Ghosts', sans-serif;
     background-color: var(--color2);
+    background-image: url('../assets/ghostbackground.jpg');
 }
 
 main {
@@ -51,6 +52,8 @@ header {
     background-color: var(--color3);
     height: var(--header-height);
     box-shadow: var(--shadow);
+    background-image: url('../assets/ghostbackground.jpg');
+
 }
 
 footer {
@@ -110,4 +113,9 @@ footer {
     padding-top: 25px;
 }
 
+.goToCart {
+    font-size: x-large;
+    font-family: 'Ghosts';
+    justify-content: right;
 
+}
