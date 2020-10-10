@@ -67,26 +67,6 @@ export function renderGhosts(ghost) {
     const removeButton = document.createElement('button');
     button.textContent = 'Add to Cart';
     button.value = ghost.code;
-
-    const drop = document.createElement('drop'); 
-    drop.classList.add('drop');
-    for (let i = 1; i < 10; i++){
-        const option = document.createElement('OPTION');
-        option.text = i;
-        option.value = i;
-        drop.append(option);
-
-    }
-    // drop.addEventListener('change', (e) => {
-    //     console.log(e.target.value);
-    // });
-
-    // p.appendChild(button);
-
-    // li.appendChild(p);
-
- 
-
     button.textContent = 'Add to Cart';
     button.style.width = '50%';
     button.style.fontFamily = 'Ghosts';

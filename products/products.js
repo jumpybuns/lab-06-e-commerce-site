@@ -1,12 +1,11 @@
 
-import { getLocallyStoredGhosts, renderGhosts } from '../Utils.js';
+import ghosts from '../data/ghosts.js';
+import renderGhosts from './render-ghost.js';
 
-const localStorageGhosts = getLocallyStoredGhosts();
+const ul = document.getElementById('ghosts');
 
-const ul = document.querySelector('ghosts');
-
-for (let i = 0; i < localStorageGhosts.length; i++) {
-    const ghost = localStorageGhosts[i];
+for (let i = 0; i < ghosts.length; i++) {
+    const ghost = ghosts[i];
     const li = renderGhosts(ghost);
     ul.appendChild(li);
 }

@@ -22,7 +22,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Ghost Name</th>
+                        <th class="align-left">Ghost Name</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Subtotal</th>
@@ -31,14 +31,20 @@
                 <tbody>
                 </tbody>
                 <tfoot>
-                    <tr>
-                        <td class="tablerow" colspan="2"></td>
-                        <td class="total tablerow" colspan="2">Total</td>
-                    </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Order Total:</th>
+                            <th id="order-total-cell"></th>
+                        </tr>
                 </tfoot>
               </table>
-        <button id="addToCart">Place Order</button>
+
         </section>
+        
+        <p class="order-now-container">
+            <button id="place-order-button">Place Order</button>
+        </p>
     </main>
     <footer>
         <div class="checkout">CHECKOUT</div>
