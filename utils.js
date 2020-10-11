@@ -1,5 +1,6 @@
-import { GHOSTS } from '../admin/product-entry.js';
-import { ghosts as hardCodeGhosts } from '../data/ghosts.js';
+import { GHOSTS } from './constants.js';
+import ghosts from '../data/ghosts.js';
+
 
 export function findById(someArray, someId) {
     for (let i = 0; i < someArray.length; i++) {
@@ -14,9 +15,9 @@ export function getLocallyStoredGhosts() {
     let localStorageGhosts = JSON.parse(localStorage.getItem(GHOSTS));
 
     if (!localStorageGhosts) {
-        const stringyGhosts = JSON.stringify(hardCodeGhosts);
+        const stringyGhosts = JSON.stringify(ghosts);
         localStorage.setItem(GHOSTS, stringyGhosts);
-        localStorageGhosts = hardCodeGhosts;
+        localStorageGhosts = ghosts;
     }
     return localStorageGhosts;
 }
@@ -134,4 +135,27 @@ export function setInLocalStorage(key, value) {
     localStorage.setItem(key, stringyItem);
 
     return value;
+}
+
+export function seedAndGetProducts() {
+    let seed = (getFromLocalStorage(GHOSTS));
+
+    if (!seed) {
+        const hardStringySeed = JSON.stringify(ghosts);
+
+        localStorage.setItem(GHOSTS, hardStringySeed);
+        seed = ghosts;
+    }
+    return seed;
+}
+
+export function addProduct(newGhost) {
+
+    const localStorageGhost = seedAndGetProducts();
+
+    localStorageGhost.push(newGhost);
+
+    const stringyLocalDice = JSON.stringify(localStorageGhost);
+
+    localStorage.setItem(GHOSTS, stringyLocalDice);
 }

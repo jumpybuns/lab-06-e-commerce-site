@@ -1,56 +1,30 @@
+// import { GHOSTS } from '../constants.js';
+import { addProduct } from '../utils.js';
 
-import { findById } from '../common/utils.js';
 
-const form = document.getElementById('form');
+const form = document.querySelector('form');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const data = new FormData(form);
 
+    const id = data.get('id');
+    const name = data.get('name');
+    const photo = data.get('photo');
+    const description = data.get('description');
+    const category = data.get('category');
+    const price = data.get('price');
+
     const newGhost = {
-        id: data.get('id'),
-        name: data.get('name'),
-        description: data.get('description'),
-        image: data.get('image'),
-        price: Number(data.get('price')),
-        
-    
+        id: id,
+        name: name,
+        photo: photo,
+        description: description,
+        category: category,
+        price: Number(price),
     };
+    addProduct(newGhost);
 
-
-    const existingGhosts = findById();
-
-    existingGhosts.push(newGhost);
-
-    const stringyGhosts = JSON.stringify(existingGhosts);
-    localStorage.setItem('GHOSTS', stringyGhosts);
-
-    window.location = '../products/index.html';
+    form.reset();
 });
-
-
-// export function getFromLocalStorage(key) {
-//     const item = localStorage.getItem(key);
-
-//     return JSON.parse(item);
-// }
-
-// export function setInLocalStorage(key, value) {
-//     const stringyItem = JSON.stringify(value);
-
-//     localStorage.setItem(key, stringyItem);
-
-//     return value;
-// }
-
-// export function addProduct(newItem) {
-//     const localStorageProducts = getFromLocalStorage();
-
-//     localStorageProducts.push(newItem);
-
-//     const stringyLocalProduct = JSON.stringify(localStorageProducts);
-//     localStorage.setItem(GHOSTS, stringyLocalProduct);
-
-
-// }
